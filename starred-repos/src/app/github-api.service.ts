@@ -8,7 +8,7 @@ export class GithubApiService {
 
   constructor(private http: HttpClient) { }
   initSources() {
-    return this.http.get('https://api.github.com/search/repositories?q=created:>2017-10-22&sort=stars&order=desc');
+    return this.http.get('https://api.github.com/search/repositories?q=created:<2019-05-14&sort=stars&order=desc');
   }
 
 }

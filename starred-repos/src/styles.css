@@ -1,5 +1,18 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 body {
-    padding: 2em 23em;
+    padding: 2em;
     background:lightgray;
+}
+
+
+.card {
+  margin: 1em 0;
+}
+
+
+.card-avatar {
+  width: 80px !important;
+  height: 80px !important;
+  background-size: cover;
+  border-radius: 0 !important;
 }

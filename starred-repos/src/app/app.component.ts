@@ -16,7 +16,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
     this.loadRepos();
-
+    const re = new Date();
+    re.setDate(re.getDate() - 30);
+    console.log(re);
   }
 
   loadRepos() {
