@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GithubApiService } from './github-api.service';
 
 @Component({
@@ -6,20 +6,28 @@ import { GithubApiService } from './github-api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   reposotries: Array<any>;
 
-  title = 'starred-repos';
-
   constructor(private reposapi: GithubApiService) {
-    console.log('app component constructor called');
   }
 
   ngOnInit() {
 
-    // load news sources
-    this.reposapi.initSources().subscribe(data => this.reposotries = data['sources']);
+    this.loadRepos();
+
   }
 
+  loadRepos() {
+
+    this.reposapi.initSources().subscribe(
+      data => {
+        this.reposotries = data['items'];
+        console.log(this.reposotries);
+
+      }
+    );
+
+  }
 }
