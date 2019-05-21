@@ -1,17 +1,18 @@
-<div id="app-root">
+<div id="app-root" infiniteScroll [infiniteScrollThrottle]="100" [infiniteScrollDistance]="2" (scrolled)="onScroll()" [scrollWindow]="true">
+
    <mat-card class="card" *ngFor="let article of reposotries">
     <mat-card-header>
-      <div mat-card-avatar class="card-avatar" [ngStyle]="{'background-image': 'url('+ article.owner.avatar_url +')'}">
+      <div mat-card-avatar class="card-avatar" [ngStyle]="{'background-image': 'url('+ article?.owner.avatar_url +')'}">
       </div>
-      <mat-card-title>{{article.name}}</mat-card-title>
+      <mat-card-title>{{article?.name}}</mat-card-title>
       <mat-card-subtitle>
-        {{article.description}}
+        {{article?.description}}
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions>
-      <button mat-button> Stars : {{article.stargazers_count}} </button>
-      <button mat-button> Issues : {{article.open_issues_count}} </button>
-      <span class="owner">Submitted by {{article.owner.login}} - {{ article.created_at }}</span>
+      <button mat-button> Stars : {{article?.stargazers_count}} </button>
+      <button mat-button> Issues : {{article?.open_issues_count}} </button>
+      <span class="owner">Submitted by {{ article?.owner.login }} - {{ article?.created_at }}</span>
     </mat-card-actions>
   </mat-card>
 </div>

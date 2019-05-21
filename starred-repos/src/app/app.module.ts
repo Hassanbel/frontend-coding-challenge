@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { GithubApiService } from './github-api.service';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatMenuModule,
@@ -24,6 +25,7 @@ import { AppComponent } from './app.component';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
+    InfiniteScrollModule,
   ],
   providers: [GithubApiService],
   bootstrap: [AppComponent]

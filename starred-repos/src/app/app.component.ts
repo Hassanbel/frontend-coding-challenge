@@ -9,16 +9,13 @@ import { GithubApiService } from './github-api.service';
 export class AppComponent implements OnInit {
 
   reposotries: Array<any>;
+  page = 2;
 
   constructor(private reposapi: GithubApiService) {
   }
 
   ngOnInit() {
-
     this.loadRepos();
-    const re = new Date();
-    re.setDate(re.getDate() - 30);
-    console.log(re);
   }
 
   loadRepos() {
@@ -26,10 +23,21 @@ export class AppComponent implements OnInit {
     this.reposapi.initSources().subscribe(
       data => {
         this.reposotries = data['items'];
-        console.log(this.reposotries);
-
       }
     );
 
   }
+
+  // When scroll down the screen
+  onScroll() {
+    console.log('Scrolled');
+    this.page = this.page + 1;
+    this.reposapi.paginationSources(this.page).subscribe(
+      data => {
+        this.reposotries.push(data['items']);
+        console.log(this.reposotries);
+      }
+    );
+  }
+
 }
